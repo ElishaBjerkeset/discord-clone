@@ -3,6 +3,8 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { cn } from "@/lib/utils";
 
 const font = Open_Sans({
   variable: "--font-open-sans",
@@ -24,8 +26,8 @@ export default function RootLayout({ children }: Readonly<{
 }>) {
   return (
     <ClerkProvider afterSignOutUrl="/">
-      <html lang="en">
-        <body>
+      <html lang="en" suppressHydrationWarning>
+        <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
         <header>
             <SignedOut>
               <SignInButton />
@@ -35,7 +37,9 @@ export default function RootLayout({ children }: Readonly<{
             </SignedIn>
           </header>
           <main className={`${font.variable} antialiased`}>
-            {children}
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
+              {children}
+            </ThemeProvider>
           </main>
         </body>
       </html>

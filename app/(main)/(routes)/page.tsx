@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/mode-toggle";
 import { ClerkProvider, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
 
       
     <div className="flex flex-col">
+      <ModeToggle></ModeToggle>
     </div>
     
   );
