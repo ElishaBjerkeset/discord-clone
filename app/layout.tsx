@@ -37,9 +37,9 @@ export default function RootLayout({ children }: Readonly<{
             </SignedIn>
           </header>
           <main className={`${font.variable} antialiased`}>
-            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
-              {children}
-            </ThemeProvider>
+              <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
+                {children}
+              </ThemeProvider>
           </main>
         </body>
       </html>
