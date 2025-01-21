@@ -7,13 +7,11 @@
     ],
   },
 };*/
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "<APP_ID>.ufs.sh"
-    ]
-  }
-}
+    domains: ["discord-clone.ufs.sh", "uploadthing.com", "utfs.io"], // Add correct domains
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

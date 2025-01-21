@@ -58,6 +58,7 @@ export const InitialModal = () => {
 
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
         try {
+            //console.log("Form Data Before Submission:", values); // Debugging log
             await axios.post("/api/servers", values);
 
             form.reset();
