@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import { clerkMiddleware } from "@clerk/nextjs/server";
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const font = Open_Sans({
   variable: "--font-open-sans",
@@ -27,10 +27,10 @@ export default function RootLayout({ children }: Readonly<{
   return (
     <ClerkProvider afterSignOutUrl="/">
       <html lang="en" suppressHydrationWarning>
-
         <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
           <main className={`${font.variable} antialiased`}>
               <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
+                <ModalProvider/>
                 {children}
               </ThemeProvider>
           </main>
