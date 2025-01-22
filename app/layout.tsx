@@ -27,15 +27,8 @@ export default function RootLayout({ children }: Readonly<{
   return (
     <ClerkProvider afterSignOutUrl="/">
       <html lang="en" suppressHydrationWarning>
+
         <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
-        <header>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
           <main className={`${font.variable} antialiased`}>
               <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
                 {children}
