@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { SocketProvider } from "@/components/providers/socket-provider";
 
 const font = Open_Sans({
   variable: "--font-open-sans",
@@ -30,8 +31,10 @@ export default function RootLayout({ children }: Readonly<{
         <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
           <main className={`${font.variable} antialiased`}>
               <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
-                <ModalProvider/>
-                {children}
+                <SocketProvider>
+                  <ModalProvider/>
+                  {children}
+                </SocketProvider>
               </ThemeProvider>
           </main>
         </body>
