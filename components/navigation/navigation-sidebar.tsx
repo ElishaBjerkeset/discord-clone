@@ -44,7 +44,6 @@ export const NavigationSidebar = async () => {
             <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
                 <ModeToggle/>
                 <UserButton
-                    
                     appearance={{
                         elements: {
                             avatarBox: "h-[48px] w-[48px]"
