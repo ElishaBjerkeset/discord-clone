@@ -64,7 +64,6 @@ const ChatInput = ({
     }
 
     return ( 
-        //<div className="absolute bottom-0 flex items-center">
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
@@ -95,7 +94,6 @@ const ChatInput = ({
                 />
             </form>
         </Form>
-        //</div>
      )
 }
  
