@@ -16,6 +16,7 @@ interface MemberIdPageProps {
 const MemberIdPage = async ({
     params
 }: MemberIdPageProps) => {
+    const {serverId, memberId} = await params;
     const profile = await currentProfile();
 
     if(!profile) {
@@ -24,7 +25,7 @@ const MemberIdPage = async ({
 
     const currentMember = await db.member.findFirst({
         where: {
-            serverId: params.serverId,
+            serverId: serverId,
             profileId: profile.id,
         },
         include: {
@@ -36,10 +37,10 @@ const MemberIdPage = async ({
         return redirect("/");
     }
 
-    const conversation = await getOrCreateConversation(currentMember.id, params.memberId);
+    const conversation = await getOrCreateConversation(currentMember.id, memberId);
 
     if(!conversation) {
-        return redirect(`/servers/${params.serverId}`);
+        return redirect(`/servers/${serverId}`);
     }
 
     const {memberOne, memberTwo} = conversation;
@@ -51,7 +52,7 @@ const MemberIdPage = async ({
             <ChatHeader
             imageUrl={otherMember.profile.imageUrl}
             name={otherMember.profile.name}
-            serverId={params.serverId}
+            serverId={serverId}
             type="conversation"
             />
             <ChatMessages

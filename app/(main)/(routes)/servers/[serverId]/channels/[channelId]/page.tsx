@@ -15,6 +15,7 @@ interface ChannelIdPageProps {
 const ChannelIdPage = async ({
     params
 }: ChannelIdPageProps) => {
+    const { serverId, channelId } = await params;
     const profile = await currentProfile();
     if(!profile) {
         redirect("/");
@@ -22,13 +23,13 @@ const ChannelIdPage = async ({
 
     const channel = await db.channel.findUnique({
         where: {
-            id: params.channelId,
+            id: channelId,
         },
     });
 
     const member = await db.member.findFirst({
         where: {
-            serverId: params.serverId,
+            serverId,
             profileId: profile.id,
         }
     });
@@ -47,8 +48,8 @@ const ChannelIdPage = async ({
             type="channel"
             />
             </div>
-            
-            <ChatMessages
+            <div className="">
+                <ChatMessages
             member={member}
             name={channel.name}
             chatId={channel.id}
@@ -62,6 +63,8 @@ const ChannelIdPage = async ({
             paramKey="channelId"
             paramValue={channel.id}
             />
+            </div>
+            
             <div className="sticky bottom-0 z-10 ">
                 <ChatInput 
             name={channel.name} 
@@ -72,7 +75,6 @@ const ChannelIdPage = async ({
                 serverId: channel.serverId,
             }}/>
             </div>
-            
         </div>
      );
 }
