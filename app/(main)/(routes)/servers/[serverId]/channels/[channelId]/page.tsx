@@ -40,11 +40,14 @@ const ChannelIdPage = async ({
 
     return ( 
         <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
-            <ChatHeader
+            <div className="sticky top-0 z-10">
+                <ChatHeader
             name={channel.name}
             serverId={channel.serverId}
             type="channel"
             />
+            </div>
+            
             <ChatMessages
             member={member}
             name={channel.name}
@@ -59,7 +62,8 @@ const ChannelIdPage = async ({
             paramKey="channelId"
             paramValue={channel.id}
             />
-            <ChatInput 
+            <div className="sticky bottom-0 z-10 ">
+                <ChatInput 
             name={channel.name} 
             type="channel" 
             apiUrl="/api/socket/messages" 
@@ -67,6 +71,8 @@ const ChannelIdPage = async ({
                 channelId: channel.id,
                 serverId: channel.serverId,
             }}/>
+            </div>
+            
         </div>
      );
 }
