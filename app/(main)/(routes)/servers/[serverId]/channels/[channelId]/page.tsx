@@ -42,7 +42,7 @@ const ChannelIdPage = async ({
 
 
     return ( 
-        <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
+        <div className="bg-white dark:bg-[#313338] flex flex-col min-h-screen">
             <div className="sticky top-0 z-10">
                 <ChatHeader
             name={channel.name}
@@ -51,8 +51,8 @@ const ChannelIdPage = async ({
             />
             </div>
             {channel.type === ChannelType.TEXT && (
-                <>
-                    <div className="">
+            <>
+            <div className="flex flex-col flex-grow justify-end overflow-y-auto">
             <ChatMessages
             member={member}
             name={channel.name}

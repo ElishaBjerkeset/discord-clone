@@ -54,13 +54,16 @@ const MemberIdPage = async ({
     const otherMember = memberOne.profileId === profile.id ? memberTwo : memberOne;
 
     return ( 
-        <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
-            <ChatHeader
+        <div className="bg-white dark:bg-[#313338] flex flex-col min-h-screen">
+            <div className="sticky top-0 z-10">
+                <ChatHeader
             imageUrl={otherMember.profile.imageUrl}
             name={otherMember.profile.name}
             serverId={serverId}
             type="conversation"
             />
+            </div>
+            
             {video && (
                 <MediaRoom
                 chatId={conversation.id}
@@ -70,7 +73,8 @@ const MemberIdPage = async ({
             )}
             {!video && (
             <>
-            <ChatMessages
+            <div className="flex flex-col flex-grow justify-end overflow-y-auto">
+                <ChatMessages
             member={currentMember}
             name={otherMember.profile.name}
             chatId={conversation.id}
@@ -83,7 +87,9 @@ const MemberIdPage = async ({
                 conversationId: conversation.id,
             }}
             />
-            <ChatInput
+            </div>
+            <div className="sticky bottom-0 z-10 ">
+                <ChatInput
             name={otherMember.profile.name}
             type="conversation"
             apiUrl="/api/socket/direct-messages"
@@ -91,6 +97,8 @@ const MemberIdPage = async ({
                 conversationId: conversation.id
             }}
             />
+            </div>
+            
             </>
             )}
         </div>
