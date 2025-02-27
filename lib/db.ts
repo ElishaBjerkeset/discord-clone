@@ -8,6 +8,6 @@ export const db = globalThis.prisma || new PrismaClient();
 
 if(process.env.NODE_ENV !== "production") globalThis.prisma = db;*/
 
-let db = new PrismaClient()
+const db = new PrismaClient()
 
 export default db

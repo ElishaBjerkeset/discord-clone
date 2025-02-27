@@ -40,9 +40,9 @@ export const InviteModal = () => {
         try {
             setIsLoading(true);
 
-            const responce = await axios.patch(`/api/servers/${server?.id}/invite-code`);
+            const response = await axios.patch(`/api/servers/${server?.id}/invite-code`);
 
-            onOpen("invite", {server: responce.data});
+            onOpen("invite", {server: response.data});
         } catch (error) {
             console.log(error);
         } finally {
@@ -71,7 +71,7 @@ export const InviteModal = () => {
                             {copied ? <Check className="w-4 h-4"/> : <Copy className="w-4 h-4"/>}
                         </Button>
                     </div>
-                    <Button onClick={onNew} disabled={isLoading} variant="link" size="sm" className="text-sx text-zinc mt-4">
+                    <Button onClick={onNew} disabled={isLoading} variant="link" size="sm" className="text-xs text-zinc mt-4">
                         Generate a new Link
                         <RefreshCw className="w-4 h-4 ml-2"/>
                     </Button>

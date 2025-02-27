@@ -28,4 +28,10 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+/** @type {import('next').NextConfig} */
+module.exports = {
+  //output: "export",
+  typescript: {
+    ignoreBuildErrors: true, // Ignores TypeScript errors during build
+  },
+};

@@ -8,12 +8,8 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-
-import { Button } from "@/components/ui/button"
 import { useModal } from "@/hooks/use-modal-store";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Check, Copy, Gavel, Loader2, MoreVertical, RefreshCw, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
+import { Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import { ServerWithMembersWithProfiles } from "@/types";

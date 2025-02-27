@@ -1,4 +1,3 @@
-import ServerIdLayout from "@/app/(main)/(routes)/servers/[serverId]/layout";
 import { currentProfile } from "@/lib/current-profile";
 import db from "@/lib/db";
 import { ChannelType, MemberRole } from "@prisma/client";

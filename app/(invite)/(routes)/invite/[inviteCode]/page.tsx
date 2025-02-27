@@ -11,19 +11,20 @@ interface InviteCodePageProps {
 const InviteCodePage = async ({
     params
 }: InviteCodePageProps) => {
+    const {inviteCode} = await params;
     const profile = await currentProfile();
 
     if(!profile) {
         return redirect("/");
     }
 
-    if(!params.inviteCode) {
+    if(!inviteCode) {
         return redirect("/");
     }
 
     const existingServer = await db.server.findFirst({
         where: {
-            inviteCode: params.inviteCode,
+            inviteCode,
             members: {
                 some: {
                     profileId: profile.id
@@ -36,7 +37,7 @@ const InviteCodePage = async ({
     }
 
     const serverToJoin = await db.server.findFirst({
-        where: { inviteCode: params.inviteCode }
+        where: { inviteCode }
     });
     
     if (!serverToJoin) {
@@ -45,7 +46,7 @@ const InviteCodePage = async ({
 
     const server = await db.server.update({
         where: {
-            inviteCode: params.inviteCode,
+            inviteCode,
         },
         data: {
             members: {

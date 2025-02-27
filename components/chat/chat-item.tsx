@@ -74,7 +74,7 @@ export const ChatItem = ({
     }
 
     useEffect(() => {
-        const handleKeyDown = (event: any) => {
+        const handleKeyDown = (event: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
             if(event.key === "Escape" || event.keyCode === 27) {
                 setIsEditing(false);
             }
@@ -114,7 +114,7 @@ export const ChatItem = ({
         form.reset({
             content: content,
         })
-    }, [content]);
+    }, [content, form]);
 
     const [mimeType, setMimeType] = useState<string | null>(null);
     

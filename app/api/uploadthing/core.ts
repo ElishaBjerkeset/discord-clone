@@ -1,8 +1,5 @@
-import { auth, clerkMiddleware } from '@clerk/nextjs/server';
-import type { NextApiRequest, NextApiResponse } from "next";
-
+import { auth } from '@clerk/nextjs/server';
 import { createUploadthing, type FileRouter } from "uploadthing/next-legacy";
-import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
 
